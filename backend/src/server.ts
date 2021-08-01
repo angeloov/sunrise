@@ -12,12 +12,15 @@ import cors from "cors";
 
 const app: Application = express();
 
-// app.use(
-// 	cors({
-// 		origin: "http://localhost:3000",
-// 		credentials: true,
-// 	})
-// );
+app.use(
+  cors({
+    origin: [
+      (process.env.NODE_ENV === "development") && "https://studio.apollographql.com",
+      "http://localhost:3000",
+    ],
+    credentials: true,
+  })
+);
 
 app.use("/api/v1", authRouter);
 
@@ -38,9 +41,7 @@ const server = new ApolloServer({
 // ------ Error Handling ------
 app.use((err: any, req: any, res: any, next: any) => {
   console.log(err.stack);
-  res
-    .status(err.status || 500)
-    .json({ message: "Server error: Something went wrong!" });
+  res.status(err.status || 500).json({ message: "Server error: Something went wrong!" });
 });
 
 export default app;
