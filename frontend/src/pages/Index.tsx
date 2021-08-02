@@ -5,7 +5,7 @@ export default function Index() {
   return (
     <div className="index-page">
       <div className="left-side">
-        <p>Ciao!</p>
+        <p>Prova</p>
       </div>
       <div className="right-side">
         <h1>Welcome back!</h1>
