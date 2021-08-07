@@ -1,11 +1,19 @@
 import { body } from "express-validator";
 
+// possible refactoring: https://express-validator.github.io/docs/schema-validation.html
+
+export const loginValidation = () => {
+  return [
+    body("email").notEmpty().trim().isEmail().withMessage("This is not an email"),
+    body("password").notEmpty().withMessage("The password field shouldn't be empty"),
+  ];
+};
+
 export const registerValidation = () => {
   return [
     body("firstname").notEmpty().trim().escape().isLength({ min: 2, max: 32 }),
     body("password")
       .notEmpty()
-      .trim()
       .isLength({ min: 8, max: 256 })
       .not()
       .equals(undefined!)
@@ -17,11 +25,12 @@ export const registerValidation = () => {
 
         return true;
       }),
-    body("confirmPassword")
-      .notEmpty()
+    body("confirmPassword").notEmpty().isLength({ min: 8, max: 256 }).not().equals(undefined!),
+    body("email")
       .trim()
-      .isLength({ min: 8, max: 256 })
-      .not()
-      .equals(undefined!),
+      .notEmpty()
+      .withMessage("The email field shouldn't be empty")
+      .isEmail()
+      .isLength({ min: 5, max: 48 }),
   ];
 };

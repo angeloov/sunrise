@@ -38,7 +38,7 @@ function createAccessToken(user: any) {
   };
 }
 
-async function createOrRetrieveRefreshToken(user: any, next: any) {
+async function createOrRetrieveRefreshToken(user: any) {
   const expiresIn = 60 * 60 * 24 * 7; // 7 days
 
   const payload = {
