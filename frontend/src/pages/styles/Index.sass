@@ -1,17 +1,69 @@
+$font-family-titles: "Recoleta", "Helvetica Neue", "Helvetica Neue", "Arial", "sans-serif"
 
 .index-page
   display: flex
   
 .left-side
   width: 50%
+  height: 100vh
   display: flex
+  flex-direction: column
+
+  justify-content: center
+
+  background-image: url(../../assets/images/index-orange-bubble.svg)
+  background-repeat: no-repeat
+  background-size: contain
 
 .right-side
   width: 50%
   display: flex
   flex-direction: column
-  justify-content: center
-  align-content: center
 
-h1
-  font-family: "Recoleta", "Helvetica"
+.logo
+  width: 5rem
+  height: 5rem
+  margin: 1rem 2rem
+  margin-left: auto
+
+.logo-container
+  display: flex
+
+.welcome-title
+  font-family: $font-family-titles
+  text-align: center
+  font-size: 2.25rem
+  margin-bottom: 3rem
+
+.landing-title
+  font-family: $font-family-titles
+  text-align: center
+  font-size: 2.5rem
+  color: #FAFAFA
+  word-wrap: break-word
+  margin: 0
+
+.login-form
+  display: flex
+  flex-direction: column
+  width: 40%
+  margin: 2rem auto
+
+.text-field
+  margin: .25rem 0
+
+.login-container
+  position: relative
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -100%)
+
+.title-container
+  margin-bottom: 2rem
+
+.index-image
+  width: 50%
+  margin: 0 auto
+
+.primary-button
+  margin: 1rem auto
