@@ -1,5 +1,7 @@
 import React from "react";
-import "../styles/pages/Index.sass";
+import "./styles/Index.sass";
+
+import TextField from "../components/TextField";
 
 export default function Index() {
   return (
@@ -9,6 +11,10 @@ export default function Index() {
       </div>
       <div className="right-side">
         <h1>Welcome back!</h1>
+        <div>
+          <TextField placeholder={"Email"} />
+          <TextField placeholder={"Password"} />
+        </div>
       </div>
     </div>
   );
