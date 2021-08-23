@@ -7,7 +7,7 @@ import { sendClientErrorString, sendClientErrorArray } from "./utils/errorHandli
 
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient({
-  log: ["query", "info", "warn", "error"],
+  // log: ["query", "info", "warn", "error"],
 });
 
 const router = express.Router();
@@ -20,9 +20,7 @@ router.post(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return sendClientErrorArray(res, errors.array());
-      }
+      if (!errors.isEmpty()) return sendClientErrorArray(res, errors.array());
 
       const { email, password } = req.body;
 
@@ -58,9 +56,11 @@ router.post(
           expiresIn: JWT_OBJ.expires,
           success: true,
         });
-      } else return sendClientErrorString(res, "The password is incorrect");
-    } catch (err) {
-      return next(err);
+      } else {
+        return sendClientErrorString(res, "The password is incorrect");
+      }
+    } catch (e) {
+      next(e);
     }
   }
 );
@@ -97,8 +97,8 @@ router.post(
 
         return res.json({ msg: "Successfully registered user", success: true });
       }
-    } catch (err) {
-      return next(err);
+    } catch (e) {
+      next(e);
     }
   }
 );

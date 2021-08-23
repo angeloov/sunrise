@@ -8,10 +8,21 @@ datasource db {
 }
 
 model users {
-  id            String  @id @default(uuid()) @db.VarChar(36)
-  firstname     String  @db.VarChar(32)
-  email         String  @db.VarChar(48)
-  hash          String  @db.VarChar(128)
-  salt          String  @db.VarChar(64)
-  refresh_token String? @db.VarChar(256)
+  id            String       @id @default(uuid()) @db.VarChar(36)
+  firstname     String       @db.VarChar(32)
+  email         String       @unique @db.VarChar(48)
+  hash          String       @db.VarChar(128)
+  salt          String       @db.VarChar(64)
+  refresh_token String?      @db.VarChar(256)
+  activities    activities[]
+}
+
+model activities {
+  id            String    @id @default(uuid()) @db.VarChar(36)
+  user_id       String    @db.VarChar(36)
+  activity_name String    @db.VarChar(64)
+  date          DateTime? @db.Date
+  begins_at     DateTime? @db.Time(6)
+  ends_at       DateTime? @db.Time(6)
+  users         users     @relation(fields: [user_id], references: [id])
 }
