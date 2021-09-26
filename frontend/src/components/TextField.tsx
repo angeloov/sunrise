@@ -3,8 +3,12 @@ import "./styles/TextField.sass";
 
 interface TextFieldProps {
   placeholder: string;
+  className?: string;
+  type?: string;
 }
 
-export default function TextField({ placeholder }: TextFieldProps) {
-  return <input type="text" className="text-field" placeholder={placeholder} />;
+export default function TextField({ placeholder, type, className }: TextFieldProps) {
+  return (
+    <input type={type || "text"} className={"text-field " + className} placeholder={placeholder} />
+  );
 }

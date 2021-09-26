@@ -1,4 +1,4 @@
-$font-family-titles: "Recoleta", "Helvetica Neue", "Helvetica Neue", "Arial", "sans-serif"
+@use '../../styles/global.sass'
 
 .index-page
   display: flex
@@ -19,29 +19,23 @@ $font-family-titles: "Recoleta", "Helvetica Neue", "Helvetica Neue", "Arial", "s
   width: 50%
   display: flex
   flex-direction: column
+  justify-content: center
 
 .logo
   width: 5rem
   height: 5rem
-  margin: 1rem 2rem
-  margin-left: auto
 
 .logo-container
   display: flex
+  position: absolute
+  top: 1rem
+  right: 2.5rem
 
 .welcome-title
-  font-family: $font-family-titles
-  text-align: center
-  font-size: 2.25rem
-  margin-bottom: 3rem
-
-.landing-title
-  font-family: $font-family-titles
+  font-family: global.$font-family-titles
   text-align: center
   font-size: 2.5rem
-  color: #FAFAFA
-  word-wrap: break-word
-  margin: 0
+  margin-bottom: 3rem
 
 .login-form
   display: flex
@@ -52,12 +46,6 @@ $font-family-titles: "Recoleta", "Helvetica Neue", "Helvetica Neue", "Arial", "s
 .text-field
   margin: .25rem 0
 
-.login-container
-  position: relative
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -100%)
-
 .title-container
   margin-bottom: 2rem
 
@@ -67,3 +55,14 @@ $font-family-titles: "Recoleta", "Helvetica Neue", "Helvetica Neue", "Arial", "s
 
 .primary-button
   margin: 1rem auto
+
+.register-link
+  font-family: global.$font-family
+  text-align: center
+  font-size: 1.25rem
+
+  a
+    text-decoration: none
+    color: #E4523C
+    font-weight: 700
+
